@@ -5,18 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<strict>
+    <source>="JS/function.js"</strict>
 <script>
-    function sayHello(name) {
-        alert("Hello " + name + ", how are you?");
+    function sayHello(Marc) {
+        return "Hello " + Marc + ", how are you?";
 
-        return ("Thats great to hear");
-    }
 
-        alert("Hello Marc, how are you?");
-    
-    function f() {
-        
-    }
+        sayHello(name:"Marc Newman")
+
+var helloMessage = sayHello(name:"Marc Newman")
+
+console.log(helloMessage)
+
+
+var myName = "Marc Newman"
+var resultOfFunction = sayHello(myName);
+
+
+
+
 
 
 
