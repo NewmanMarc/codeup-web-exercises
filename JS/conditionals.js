@@ -1,3 +1,11 @@
+function analyzeColor(input){
+    if(input === "red"){
+        return "red roses are for Valentines"
+    } else if (input === "orange"){
+    }
+    return input
+}
+
 var analyzeColor = prompt ("Whats your favorite color?")
     alert(analyzeColor +  ", thats my favorite color too!")
 if (analyzeColor === "blue") {
@@ -10,7 +18,6 @@ else if (analyzeColor === "cyan"){
     alert("cyan is interesting I dont know too much about cyan.");
 
 }
-
 
 /**
  * TODO:
