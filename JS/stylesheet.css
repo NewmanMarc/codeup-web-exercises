@@ -3,3 +3,31 @@ h1 {
     font-size: 2em;
 }
 
+
+h1 {
+text-align: center;
+}
+
+body, li{ font-style: italic; color:darkgreen}
+     /*width: 8px;*/
+    /*height: 9px;*/
+    /*border: 90px solid;*/
+    /*color: pink;*/
+
+ol { list-style: lower-roman; }
+ul { list-style: lower-greek; }
+
+a:visited {
+    color:black;
+}
+
+/* mouse hover over link (:hover) */
+a:hover {
+    color:pink;
+}
+
+/* active/selected link (:active) */
+a:active {
+    color:green;
+}
+
