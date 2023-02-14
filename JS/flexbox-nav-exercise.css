@@ -1,0 +1,27 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    box-sizing: border-box;
+}
+nav{
+    background-color: wheat;
+    display: flex;
+    padding: 1em
+}
+nav a{
+    text-decoration: none;
+    color: #3B94D9;
+    padding: 1em;
+
+}
+h2{
+    margin: 10px;
+}
+nav a:nth-child(6){
+    margin-left: 18em;
+}
+nav a:hover{
+    background-color: pink;
+}
