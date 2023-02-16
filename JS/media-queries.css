@@ -1,0 +1,31 @@
+
+@media screen and (min-width: 200px){
+    .header-img{
+        display: flex;
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+@media screen and (min-width: 100px) {
+    .sub-section {
+        display: flex;
+        font-size: 15px;
+    /*display: flex;*/
+    /*    flex-wrap: wrap;*/
+}
+/*        width: 0px;*/
+/*        height: 0px;*/
+/*    }*/
+
+}
+
+@media screen and (min-width: 100px){
+    .header-img{
+        display: flex;
+        width: 200px;
+        height: 200px;
+    }
+
+}
