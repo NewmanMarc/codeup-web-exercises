@@ -1,0 +1,37 @@
+.card-img {
+    /*background-image: url('https://java.codeup.com/examples/bootstrap/pizza.png');*/
+    height: 346px;
+    background-size: cover;
+    font-size: 90px;
+}
+.nav{
+    border: 90px red;
+    justify-content: space-between;
+}
+.container-fluid {
+    justify-content: space-evenly;
+}
+.container-fluid1 {
+    display: flex;
+    justify-content: space-evenly;
+    height: 30px;
+    font-size: 2px;
+}
+.nav-item {
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0px;
+}
+h2{
+
+    font-size: 35px;
+}
+.card-title {
+    justify-items: center;
+}
+
+
+
+
+
