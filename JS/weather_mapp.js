@@ -11,13 +11,7 @@
             zoom: 5, // starting zoom (0 - 20)
         }
     );
-    // mapboxgl.accessToken = myToken;
-    // const map = new mapboxgl.Map({
-    //     container: 'map', // container ID
-    //     style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    //     center: [-74.5, 40], // starting position [lng, lat]
-    //     zoom: 9, // starting zoom
-    // });
+
     map.addControl(new mapboxgl.GeolocateControl({
         positionOptions:{
             enableHighAccuracy: true
@@ -29,7 +23,7 @@
     //marker
 
     let weatherMarker = new mapboxgl.Marker({draggable: true})
-        .setLngLat([-74.5, 40])
+        .setLngLat([-84.261508, 33.469448])
         .addTo(map);
     console.log(weatherMarker);
     function onDragEnd() {
@@ -44,7 +38,7 @@
     //goecode
 
     function getLocation(searchString) {
-        geocode(searchString, myMapToken).then(function (results) {
+        geocode(searchString, myToken).then(function (results) {
             weatherMarker.setLngLat(results);
             map.flyTo({center: results, zoom: 9});
             weatherData(results);
@@ -56,7 +50,7 @@
     //current weather
 
     function weatherData(results) {
-        $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${weatherKey}&units=imperial`).done(function (data) {
+        $ .get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${'myKey'}&units=imperial`).done(function (data) {
             let html = "";
             html += `<h6>Date: ${dateConversion(data.dt)}</h6>`;
             html += `<h6>City: ${data.name}</h6>`;
@@ -71,7 +65,7 @@
     //five-day forecast
 
     function fiveDayForecast(results) {
-        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&exclude=current,minutely,hourly&appid=${weatherKey}&units=imperial`).done(function(data){
+        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&exclude=current,minutely,hourly&appid=${'myKey'}&units=imperial`).done(function(data){
             let html = '';
             for (let i = 1; i < 6; i++) {
                 const newDate = new Date(data.daily[i].dt * 1000);
