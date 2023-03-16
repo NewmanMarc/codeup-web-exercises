@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>[w] [e] [a] [t] [h] [e] [r]</title>
+</head>
+<body>
+<h2>~ weather ~</h2>
+<div id="weatherBody">
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="js/keys.js"></script>
+<script>
+  <div id="map"></div>
+  <style>
+
+    #map {
+    border: 3px solid black;
+    margin: 5em 1em;
+    border-radius: 100%;
+    height: 40vh;
+    width: 90vw;
+  }
+  </style>
+
+  <script src=".idea/data/keys.js"></script>
+<script>
+  <!-- My Token is here (my costCo card)-->
+  let myToken= "pk.eyJ1IjoiaG93ZWxsa2VuIiwiYSI6ImNsZjJzYTNiazBsYnAzeXBqZjdrZW96djMifQ.otX7RJGm05Flb7kye7wgvw";
+
+  mapboxgl.accessToken = myToken;
+
+  //A JavaScript object named 'map'
+  // using mapboxgl.Map() method with
+  //an "options" object that sets properties: container (where the map goes in my HTML by id), style, center (where the map starts centered), and zoom (how close in we are when we begin)
+  const map = new mapboxgl.Map(
+          {
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
+            center: [-84.261508, 33.469448], // starting position [lng, lat]
+            zoom: 5, // starting zoom (0 - 20)
+          }
+  );
+
+
+  console.log("~~~");
+  console.log("forecast endpoint below");
+  console.log(`https://api.openweathermap.org/data/2.5/forecast?lat=${29.51034}&lon=${-98.64661}&appid=${mapBoxKey}`);
+  //Actual URL being built:
+  // https://api.openweathermap.org/data/2.5/forecast?lat=29.51034&lon=-98.64661&appid=2e85f153f2651752d65ea5c7164f6244
+  //CurrentWeather
+  //endpoint: "/weather"
+  //url syntax example: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+  console.log("~~~");
+  console.log("weather endpoint below");
+  console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${29.51034}&lon=${-98.64661}&appid=${openWeatherKey}`);
+  //    Okay: How do I change the UNITS? It is NOT going to be 288 degrees in Leon Valley today.
+  //Answer: add in units key with value of 'imperial' (or metric)
+  console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${29.51034}&lon=${-98.64661}&appid=${openWeatherKey}&units=imperial`);
+  //Okay - we've messed with the URLs and endpoints, talked about ways to interact with them and see them in our browser
+  //How do we TALK to this data: For example, can I just get curated "current forecast" data and print it on my screen
+  console.log(": ~ ~ Talking to data below ~ ~ :");
+  let html = "";
+
+  geocode("8646 Sunny Oaks, San Antonio, TX 78250", mapBoxKey).then(function(results){
+    console.log(results[0]);
+    console.log(results[1]);
+    ;} //test successful: key and geocode function provided correct looking results
+  )
+
+  function geoCodeBuildWeather(searchString) {
+
+    geocode(searchString, mapBoxKey).then(function (results) {
+      console.log(results[0]);
+      console.log(results[1]);
+
+      console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`);
+
+      $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`).done(function (data) {
+
+
+        html += `<h4>Current location: ${data.name}</h4>`;
+
+        html += `<h4>Current weather: ${data.weather[0].description}</h4>`;
+
+
+        html += `<h5>Current average wind speed: ${parseInt(data.wind.speed)} knots</h5>`;
+
+        html += `<h5>Current Temperature: ${parseInt(data.main.temp)} &deg;</h5>`;
+
+
+        html += `<h5>Current humidity: ${parseInt(data.main.humidity)}</h5>`;
+
+        $("#weatherBody").html(html);
+
+
+      })
+      let myToken = "pk.eyJ1IjoiaG93ZWxsa2VuIiwiYSI6ImNsZjJzYTNiazBsYnAzeXBqZjdrZW96djMifQ.otX7RJGm05Flb7kye7wgvw";
+
+      mapboxgl.accessToken = myToken;
+
+      const map = new mapboxgl.Map(
+              {
+                container: 'map', // container ID
+                style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
+                center: [-84.261508, 33.469448], // starting position [lng, lat]
+                zoom: 5, // starting zoom (0 - 20)
+              }
+      );
+
+      //What is a map without some markers?
+      //set up a JavaScript object
+      //call mapboxgl.Marker()
+      //then. . setProperties() methods
+
+      let myMarker = new mapboxgl.Marker();
+      myMarker.setLngLat([-84.323470, 33.445970]);
+      myMarker.addTo(map);
+      myPopup.setHTML("<span>Home</span>");
+
+      //Codeup coords: 29.426867117042384, -98.48961467443773
+
+      //More markers? More problems? Maybe
+      let myMarker2 = new mapboxgl.Marker();
+      myMarker2.setLngLat([-84.335861, 33.471351]);
+      myMarker2.addTo(map);
+      myPopup.setHTML("<span>Georgia Potato Factory</span>")
+
+      let myMarker3 = new mapboxgl.Marker();
+      myMarker3.setLngLat([-84.303520, 33.545990])
+      myMarker3.addTo(map);
+      myPopup.setHTML("<span>Wicked Wangz</span>");
+      //MapboxGl - can you make me a new Popup object?
+      let myPopup = new mapboxgl.Popup();
+
+      //popup needs to know: where do I go [lat lng]? what do I say [html]? what map do I go to [by referencing the js variable]
+
+      // myPopup.setLngLat([-84.323470, 33.445970])
+      // myPopup.setHTML("<span>Wicked Wangz</span>")
+
+      // I can add a popup to the map. . .
+      //     myPopup.addTo(map)
+
+      //Or: add a popup to the MARKER ITSELF
+      myMarker.setPopup(myPopup);
+      myMarker2.setPopup(myPopup);
+      myMarker3.setPopup(myPopup);
+
+
+      geocode("420 beachview dr, Hampton, GA 30228", myToken).then(function(results){
+        console.log("Geocode result");
+        console.log(results);
+      })
+
+      reverseGeocode({lat: 29.42686, lng: -98.48961}, myToken).then(function(results){
+        console.log("Reverse GC results");
+        console.log(results);
+      })
+
+      //Can we geocode an address and use that address we get in the result to add a popup and flyTo there?
+
+      //6715 W Colfax Ave, Lakewood, CO 80214
+
+      geocode("420 beachview dr, Hampton, GA 30228", myToken).then(function(results){
+        console.log(results);
+        let myMarker3 = new mapboxgl.Marker();
+        myMarker3.setLngLat(results);
+        myMarker3.addTo(map);
+
+        let myOptionsObj = {center: results, zoom: 15};
+
+        map.flyTo(myOptionsObj);
+
+        console.log(myOptionsObj);
+    })
+  }
