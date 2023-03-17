@@ -11,6 +11,7 @@
             zoom: 5, // starting zoom (0 - 20)
         }
     );
+    var myKey = 'aaf23a8dad3a01c63317bddadf73e7b2';
 
     map.addControl(new mapboxgl.GeolocateControl({
         positionOptions:{
@@ -35,7 +36,7 @@
     }
     weatherMarker.on(`dragend`, onDragEnd);
 
-    //goecode
+
 
     function getLocation(searchString) {
         geocode(searchString, myToken).then(function (results) {
@@ -45,12 +46,12 @@
             // weatherForecast(results);
             fiveDayForecast(results);
         })
-    };
+    }
 
     //current weather
 
     function weatherData(results) {
-        $ .get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${'myKey'}&units=imperial`).done(function (data) {
+        $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${myKey}&units=imperial`).done(function (data) {
             let html = "";
             html += `<h6>Date: ${dateConversion(data.dt)}</h6>`;
             html += `<h6>City: ${data.name}</h6>`;
@@ -58,14 +59,14 @@
             html += `<h6>Wind speed: ${parseInt(data.wind.speed)} knots</h6>`;
             html += `<h6>Temp: ${parseInt(data.main.temp)} &deg;</h6>`;
             html += `<h6>Humidity: ${parseInt(data.main.humidity)}</h6>`;
-            $("#currentCard").html(html);
+            $("#currentCard").get(html);
         })
-    };
+    }
 
     //five-day forecast
 
     function fiveDayForecast(results) {
-        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&exclude=current,minutely,hourly&appid=${'myKey'}&units=imperial`).done(function(data){
+        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&exclude=current,minutely,hourly&appid=${myKey}&units=imperial`).done(function(data){
             let html = '';
             for (let i = 1; i < 6; i++) {
                 const newDate = new Date(data.daily[i].dt * 1000);
