@@ -15,21 +15,59 @@
 <body class="bg-white">
 <h1 class="text-center text-darker">Weather Forecast Map</h1>
 <main>
-  <div id='map' style='width: 100%; height: 300px;'></div>
+<!--  <div id='map' style='width: 100%; height: 300px;'></div>-->
   <input type="text" placeholder="Enter location here" id="citySearch" class="m-1">
   <button id="searchBtn">Click to get weather report</button>
-  <div class="container">
-    <div>
-      <h2 class="text-dark text-decoration-underline">Your Today's Weather</h2>
-      <div id="currentCard" class="card text-bg-dark m-3" style="max-width: 15rem;"></div>
-    </div>
-    <div>
-      <h2 class="text-dark text-decoration-underline">The Five Day Forecast:</h2>
-      <div id="cardGroup" class="d-grid text-bg-dark m-3"></div>
-    </div>
-  </div>
-</main>
+  <div id="weatherBody">
 
+  </div>
+  <div id='map' style='width: 900px; height: 300px;'></div>
+  <div class="box"></div>
+  <div class="row row-cols-1 row-cols-md-5 g-4 ">
+    <div class="col">
+      <div class="card" id="day1" >
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text">Info</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card" id="day2">
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text">Info</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card" id="day3">
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text">Info</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card"id="day4">
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text">Info</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card"id="day5">
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text">Info</p>
+        </div>
+      </div>
+    </div>
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
@@ -45,5 +83,7 @@
 
 <!-- Custom JS -->
 <script src="weather_mapp.js"></script>
-</body>
+  </div>
+</main>
+  </body>
 </html>

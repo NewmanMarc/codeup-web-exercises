@@ -51,33 +51,72 @@
     //current weather
 
     function weatherData(results) {
-        $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${myKey}&units=imperial`).done(function (data) {
-            let html = "";
-            html += `<h6>Date: ${dateConversion(data.dt)}</h6>`;
-            html += `<h6>City: ${data.name}</h6>`;
-            html += `<h6>Weather: ${data.weather[0].description}</h6>`;
-            html += `<h6>Wind speed: ${parseInt(data.wind.speed)} knots</h6>`;
-            html += `<h6>Temp: ${parseInt(data.main.temp)} &deg;</h6>`;
-            html += `<h6>Humidity: ${parseInt(data.main.humidity)}</h6>`;
-            $("#currentCard").get(html);
-        })
+        let addhtml= ""
+
+        // day1
+        addhtml += `<h4>Current location: ${data.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myToken.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myToken.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myToken.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myToken.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myToken.list[1].main.humidity)}</h5>`;
+        $("#day1").html(addhtml);
+
+
+        // day2
+        addhtml += `<h4>Current location: ${myKey.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myKey.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myKey.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myKey.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myKey.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myKey.list[1].main.humidity)}</h5>`;
+        $("#day2").html(addhtml);
+
+
+        // day1
+        addhtml += `<h4>Current location: ${myKey.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myKey.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myKey.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myKey.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myKey.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myKey.list[1].main.humidity)}</h5>`;
+        $("#day3").html(addhtml);
+
+
+        // day1
+        addhtml += `<h4>Current location: ${myKey.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myKey.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myKey.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myKey.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myKey.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myKey.list[1].main.humidity)}</h5>`;
+        $("#day4").html(addhtml);
+
+        // day1
+        addhtml += `<h4>Current location: ${myKey.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myKey.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myKey.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myKey.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myKey.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myKey.list[1].main.humidity)}</h5>`;
+        $("#day5").html(addhtml);
     }
 
     //five-day forecast
 
     function fiveDayForecast(results) {
-        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&exclude=current,minutely,hourly&appid=${myKey}&units=imperial`).done(function(data){
-            let html = '';
-            for (let i = 1; i < 6; i++) {
-                const newDate = new Date(data.daily[i].dt * 1000);
-                html += `<h2>Date: ${newDate.toDateString()}</h2>`;
-                html += `<h6>Weather: ${data.daily[i].weather[0].description}</h6>`;
-                html += `<h6>Temp: ${data.daily[i].temp.day} &deg;</h6>`;
-                html += `<h6>Humidity: ${data.daily[i].humidity}</h6>`;
-            }
-            $('#cardGroup').html(html)
-        })
-    }
+        let addhtml= ""
+
+        // day1
+        addhtml += `<h4>Current location: ${myKey.city.name}</h4>`;
+        addhtml += `<h4>Date: ${myKey.list[1].dt_txt}</h4>`
+        addhtml += `<h4>Future weather: ${myKey.list[1].weather[0].description}</h4>`;
+        addhtml += `<h5>Current average wind speed: ${parseInt(myKey.list[1].wind.speed)} knots</h5>`;
+        addhtml += `<h5>Current Temperature: ${parseInt(myKey.list[1].main.temp)} &deg;</h5>`;
+        addhtml += `<h5>Current humidity: ${parseInt(myKey.list[1].main.humidity)}</h5>`;
+        $("#day1").html(addhtml);
+        }
+
 
     //input search and submit botton
 
